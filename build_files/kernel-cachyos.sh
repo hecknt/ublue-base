@@ -7,7 +7,7 @@ dnf5 -y copr enable bieszczaders/kernel-cachyos-addons
 
 # Remove existing kernel
 dnf5 versionlock delete kernel{-core,-modules,-modules-core,-modules-extra,-tools,-tools-libs,-headers,-devel}
-dnf5 -y remove --no-autoremove kernel-modules kernel-modules-core kernel-modules-extra
+dnf5 -y remove --no-autoremove --setopt protect_running_kernel=false kernel-modules kernel-modules-core kernel-modules-extra
 
 # Install CachyOS kernel & addons
 dnf5 -y install kernel-cachyos{,-core,-modules,-devel,-devel-matched}
