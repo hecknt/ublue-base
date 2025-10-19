@@ -20,7 +20,13 @@ dnf5 -y install virtualbox-guest-additions
 # install nvidia-open module for nvidia images (NOTE: I DO NOT TEST NVIDIA IMAGES)
 case "${IMAGE}" in
   *"-nvidia")
-    dnf5 -y install kernel-cachyos-nvidia-open
+    dnf5 -y install \
+      kernel-cachyos-nvidia-open \
+      kmod-nvidia \
+      nvidia-driver \
+      nvidia-driver-cuda \
+      nvidia-kmod-common \
+      nvidia-settings
   ;;
 esac
 
