@@ -1,0 +1,33 @@
+---
+name: Build Base Images
+on:
+  pull_request:
+    branches:
+      - main
+    paths-ignore:
+      - "**.md"
+  schedule:
+    - cron: '31 5 * * *'
+  push:
+    branches:
+      - main
+    paths-ignore:
+      - '**.md'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  packages: write
+  id-token: write
+
+jobs:
+  build-image:
+    name: Build Images
+    uses: ./.github/workflows/build-image.yml
+    secrets: inherit
+    strategy:
+      fail-fast: false
+      matrix:
+        image_flavor: ["Base" "CachyOS"]
+    with:
+      image_flavor: ${{ matrix.image_flavor }}
