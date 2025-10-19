@@ -22,7 +22,6 @@ case "${IMAGE}" in
   *"-nvidia")
     dnf5 -y install \
       kernel-cachyos-nvidia-open \
-      kmod-nvidia \
       nvidia-driver \
       nvidia-driver-cuda \
       nvidia-kmod-common \
